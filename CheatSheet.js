@@ -19,4 +19,8 @@ display: inline;        element in same line，像一行里的文字一样，能
 
 visibility: hidden;     只是让element看不见，但是structure还在，就是页面不显示，但是那东西还在那能感觉到。
 
+MEDIA QUERIES
+@media all and (mid-width: 300px) {
+
+}                                       表示询问media是不是满足屏幕大小最小大于300px，是的话就apply｛ ｝里的style。
 
