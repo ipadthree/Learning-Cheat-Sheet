@@ -11,3 +11,12 @@ border-radis: 35px;
               50%; 控制element的角变圆
 
 z-index: 10;   z demision上，决定屏幕中谁在谁上面。大的在上面
+
+display: inline;        element in same line，像一行里的文字一样，能塞就塞。
+         block;         block level, take up a whole line, Box Model applies.
+         inline-block;  make block level element inline; still inline, but can somehow apply box model property.
+         none;          整个element就消失了，structure里没有了，但是dom里能显示。
+
+visibility: hidden;     只是让element看不见，但是structure还在，就是页面不显示，但是那东西还在那能感觉到。
+
+
