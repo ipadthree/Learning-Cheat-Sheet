@@ -1,6 +1,12 @@
 child element 的内容大于parent的size叫overflow。
 overflow: hidden; overflow 超出parent的部分就直接砍掉
           auto; 加个scroll bar
+text-overflow: ellipsis; 加"..."       overflow的文字该怎么处理
+              text-overflow 能工作的前提是必须有这些：
+            ｛
+              white-space: nowrap;
+              overflow: hidden;
+            ｝
 
 position: relative; top bottom left right确定他和他应该在的位置的相对位置。
           absolute; top bottom left right确定和他nearest ancestor的位置
@@ -24,3 +30,4 @@ MEDIA QUERIES
 
 }                                       表示询问media是不是满足屏幕大小最小大于300px，是的话就apply｛ ｝里的style。
 
+white-space: nowrap;        如何处理element里的连续空格。
