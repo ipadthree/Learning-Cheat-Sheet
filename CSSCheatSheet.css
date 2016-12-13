@@ -36,6 +36,16 @@ white-space: nowrap;        如何处理element里的连续空格。
 
 font-family: Georgia, "Times New Roman", serif;         这叫font stack (local)
 
+Pseudo-Elements is used to style specified parts of an element.  pseudo element一共就这5个
+  p::first-line {
+
+  }
+  ::first-letter
+  ::before ｛
+    content；‘要加的东西’
+  ｝            used to insert some content before the content of an element
+  ::after       insert content after the content of an element
+  ::section     matches the style to the part that user用鼠标拉上选中的
 
 
 
