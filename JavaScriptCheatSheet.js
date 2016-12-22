@@ -1,0 +1,1 @@
+Array.isArray(obj)        判断obj是不是array
