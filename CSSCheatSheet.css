@@ -47,6 +47,94 @@ Pseudo-Elements is used to style specified parts of an element.  pseudo element�
   ::after       insert content after the content of an element
   ::section     matches the style to the part that user用鼠标拉上选中的
 
+@font-face {                            web-font先声明 然后和local一样用
+  font-family:
+  src
+  font-weight:normal;
+  font-style: ;
+}
+
+font-size: 16px;
+           24px;            //absolute size
+
+           xx-small; x-small; small; medium; x-large; x-large; xx-large; 依靠client agent 可能不同browser 不同。
+
+           1.8em;     browser default;
+           1em;       如果parent element 有font－size， 以parent element size 为基准，不以browser default 为基准
+                      一般browser default 是16px；
+           120%       relative，与上面一样，字间关系保留，手机 平板 pc上关系不用变
+
+
+font-style: italic;
+            iherit;           Go to parent element, find font-style, inherit it.
+            normal;           don't use italic;
+            oblique;          Use oblique version of the font;
+
+font-weight: 100; ----- 900;
+             inherit;
+             bold;  bolder;
+             lighter;
+             normal;
+
+text-transform: capitalize;
+                lowercase;
+                inherit;
+                none;               undo anything transform done before;
+                uppercase;
+
+font-variant: small-caps;         都是大写，但是每个词开头的第一个字母字号大，后面的小。
+              normal;
+              interit;
+
+text-decoration: none;
+                 underline;       加下划线
+                 overline；       上划线
+                 line－through；   删除线
+                 blink；           闪闪的。
+
+text-align: left;
+            right;
+            center;
+            justify;
+
+
+-moz-hyphens: auto
+-webkit-
+-o-                           vendor prefix
+
+
+letter-spacing: -5px;
+                15px;       字母间间隔调整；
+
+word-spacing: 15px;
+              1.5em;
+              150%;
+              .2em;
+
+text-indent: 1em;
+             -.5em;
+             -2000em;         用于hide文字
+
+line-height: normal;      1 - 1.2em   size of font
+             140%;        text 的1.4倍是行高
+             1.4em；       对em，这个line－height会fixed传给children，children都是1.4em，不管children的line－height设多少。
+             1.4;         1.4倍，和上面一样，这个可以给children inherit再乘倍数
+             50px；       这样设line－height，如果没有box height 那line－height成element height，文字在element上下正中。
+
+
+Horizontal margins accumulative
+Vertical margins collapse                   Floated elements removed from normal document flow
+
+margin-top      margin-bottom     两个相遇，大的apply，小的丢了
+如果没border， padding， parent, children 的margin 都 collapse
+有padding， border； margin 就都不collapse 因为他们 keep margins from touching
+margin-right: auto;         Give it what's left over.
+
+min-width: 150px;       Set minimus width of element
+           70%;         No smaller, if min-width > width or max-width, min-width rules;
+
+
+
 
 
 
