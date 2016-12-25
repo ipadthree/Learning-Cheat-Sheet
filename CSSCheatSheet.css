@@ -138,5 +138,55 @@ min-width: 150px;       Set minimus width of element
 
 
 
+FlexBox:
+http://flexbox.io/view/ND8SjPJOk_M
+
+.contianer{
+  display: flex;    子元素就自动都成flex了
+  hieght: 100vh       viewport hieght     这个相当于100%，就是现在打开页面的100%大小 和flexbox没关
+  flex-direction: row;        这是default           main aix 从左往右 cross axis 从上到下
+                  row-reverse;      从右向左
+                  column;           main axis 从上到下 cross axis 从左到右
+                  column-reverse;     main aixs从下到上
+
+  flex-wrap: nowrap;这个是default        给flex container 里的flex element 赋值宽度时，如果宽度大于window 宽度，flex element 就直接在window宽度停住了，不再变宽，并且自动evenly dsitribute width。
+             wrap;        这个就是每个element比如300px，那就有多宽就放多少，剩下的放下一层
+             wrap-reverse;          change,reverse cross axis
+  justify-content: flex-start;        default 从flex container的开始开始放
+                   flex-end;          从flex container end开始往前摆element，靠近end；
+                   center;
+                   space-between;     分散开，从头平均分散到尾。
+                   space-around;      跟上面一样，就是头和尾之外离container 还有一定的空格空间
+}
+
+
+width: calc(33.333333% - 20px);       calc是CSS3里新的，就是每个box model元素是三分之一的地方剪去20px，20px可能是margin，margin不算box model 的内容。
+
+.box{
+  flex: 1;        flex property：flex element里这样就是把所有element evenly distribute
+  /*move DOM element without really move DOM element*/
+  order:3;        reorder,默认的都是0。设成3就是放到所有0，1，2的element之后，4的之前，小的放前面，大的后面。
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
