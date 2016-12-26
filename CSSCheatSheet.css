@@ -157,6 +157,13 @@ http://flexbox.io/view/ND8SjPJOk_M
                    center;
                    space-between;     分散开，从头平均分散到尾。
                    space-around;      跟上面一样，就是头和尾之外离container 还有一定的空格空间
+
+  align-items: center;            /*cross axis*/
+               stretch;           拉长element占满container   这个是好多的default的
+               flex-start;
+               flex-end;
+               baseline;        看element中的text，把text的底基准一样。
+  align-content: space-between;         和justify-content的property 一样    /*corss aixs*/
 }
 
 
@@ -166,28 +173,5 @@ width: calc(33.333333% - 20px);       calc是CSS3里新的，就是每个box mod
   flex: 1;        flex property：flex element里这样就是把所有element evenly distribute
   /*move DOM element without really move DOM element*/
   order:3;        reorder,默认的都是0。设成3就是放到所有0，1，2的element之后，4的之前，小的放前面，大的后面。
+  align-self: flex-end;         也是align，但是只是align自己这个element 会overrideflex container 之前定好的align property
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
