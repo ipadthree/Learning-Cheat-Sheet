@@ -169,8 +169,11 @@ http://flexbox.io/view/ND8SjPJOk_M
 
 width: calc(33.333333% - 20px);       calc是CSS3里新的，就是每个box model元素是三分之一的地方剪去20px，20px可能是margin，margin不算box model 的内容。
 
+  /*flex item*/
 .box{
   flex: 1;        flex property：flex element里这样就是把所有element evenly distribute
+        2;        1,2的区别就是如果items都是1的话，container就会把他自己的空间一一平均分给各个item，而如果有一个是2的话，2分配的空间就是别人的2倍，3就是3倍
+  flex-basis: ; flex-grow: ; flex-shrink: 
   /*move DOM element without really move DOM element*/
   order:3;        reorder,默认的都是0。设成3就是放到所有0，1，2的element之后，4的之前，小的放前面，大的后面。
   align-self: flex-end;         也是align，但是只是align自己这个element 会overrideflex container 之前定好的align property
