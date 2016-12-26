@@ -152,7 +152,7 @@ http://flexbox.io/view/ND8SjPJOk_M
   flex-wrap: nowrap;这个是default        给flex container 里的flex element 赋值宽度时，如果宽度大于window 宽度，flex element 就直接在window宽度停住了，不再变宽，并且自动evenly dsitribute width。
              wrap;        这个就是每个element比如300px，那就有多宽就放多少，剩下的放下一层
              wrap-reverse;          change,reverse cross axis
-  justify-content: flex-start;        default 从flex container的开始开始放
+  justify-content: flex-start;        default 从flex container的开始开始放         /*main axis*/
                    flex-end;          从flex container end开始往前摆element，靠近end；
                    center;
                    space-between;     分散开，从头平均分散到尾。
@@ -167,6 +167,7 @@ width: calc(33.333333% - 20px);       calc是CSS3里新的，就是每个box mod
   /*move DOM element without really move DOM element*/
   order:3;        reorder,默认的都是0。设成3就是放到所有0，1，2的element之后，4的之前，小的放前面，大的后面。
 }
+
 
 
 
