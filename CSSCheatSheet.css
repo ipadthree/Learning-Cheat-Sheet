@@ -194,3 +194,28 @@ form imput[type='submit'] {width: 100px}        就是找only form input element
 
 
 #boxout * p {border:1px solid green; }      这样可以找id下所有element再下的p tag就是paragraph不能是#boxout的direct child
+
+#box .className {border:1px}
+.className #box {border:1px}                  这两种都是110的specificity,跟顺序没有关系
+
+
+
+div如果没指定的话，他会一直延展到browser windows的宽度，
+span只会宽到和它里面的text相适应宽度。
+
+
+
+Points：
+.classname { font-size:14pt; }      A point is equivalent in size to 1/72 of an inch.
+
+Inch:
+.classname { width:3in; }         An inch is the equivalent of 72 points
+
+Centimeters:
+.classname { height:2cm; }      One centimeter is a little over 28 points
+
+Millimeters:
+.classname { font-size:5mm; }
+
+Picas:
+.classname { font-size:1pc; } A pica is another print typographic measurement, which is equivalent to 12 points.
