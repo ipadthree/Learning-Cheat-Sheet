@@ -8,8 +8,8 @@ text-overflow: ellipsis; 加"..."       overflow的文字该怎么处理
               overflow: hidden;
             ｝
 
-position: relative; top bottom left right确定他和他应该在的位置的相对位置。
-          absolute; top bottom left right确定和他nearest ancestor的位置
+position: relative; top bottom left right都是指距离top left等的距离，确定他和他应该在的位置的相对位置。
+          absolute; top bottom left right确定和他nearest ancestor的位置      /*element就会被从document中提出来，其余element就会占用空出来的空间？*/
           static; 不受top bottom left right的影响
           fixed;  top bottom left right 固定这个element在页面上的位置， 怎么scroll都不动
 
