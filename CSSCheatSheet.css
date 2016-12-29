@@ -66,7 +66,7 @@ font-size: 16px;
 
 
 font-style: italic;
-            iherit;           Go to parent element, find font-style, inherit it.
+            inherit;           Go to parent element, find font-style, inherit it.
             normal;           don't use italic;
             oblique;          Use oblique version of the font;
 
@@ -92,7 +92,7 @@ text-decoration: none;
                  line－through；   删除线
                  blink；           闪闪的。
 
-text-align: left;
+text-align: left;                   这是水平align
             right;
             center;
             justify;
@@ -100,7 +100,9 @@ text-align: left;
 
 -moz-hyphens: auto
 -webkit-
--o-                           vendor prefix
+-o-
+-ms-                //  IE
+                          vendor prefix
 
 
 letter-spacing: -5px;
@@ -219,3 +221,15 @@ Millimeters:
 
 Picas:
 .classname { font-size:1pc; } A pica is another print typographic measurement, which is equivalent to 12 points.
+
+
+
+color是forehead的color，
+background-color(或者是直接background)是背景的颜色
+
+background: linear-gradient(#90, red, blue);            可以让背景颜色在不同颜色中渐变 这是vertical的
+            linear-gradient(90deg, #90, red, blue);       这样事水平的
+
+background: radial-gradient(#90, red, blue);         椭圆形放射的变颜色
+            radial-gradient(circle, #90, red, blue);          变成圆形
+            radial-gradient(80%, 20%, #90, red, blue);        调整宽高
