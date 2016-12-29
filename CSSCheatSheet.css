@@ -184,3 +184,13 @@ JavaScript里减号➖是留给做减法用的，但是CSS里有很多如font-si
 document.getElementById('dd').style.fontSize = '24px';
 
 .innerHTML          是找html tag里的文字内容。
+
+
+Attribute Selector:
+[type='submit'] {width: 100px}        就是找所有有attribute type='submit'的并且设定宽度。
+form imput[type='submit'] {width: 100px}        就是找only form input element有type='submit'的
+[class='className']           和 .className效果一样
+[id='idName']           与 ＃idName效果一样。
+
+
+#boxout * p {border:1px solid green; }      这样可以找id下所有element再下的p tag就是paragraph不能是#boxout的direct child
