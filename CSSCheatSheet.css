@@ -47,6 +47,24 @@ Pseudo-Elements is used to style specified parts of an element.  pseudo element�
   ::after       insert content after the content of an element
   ::section     matches the style to the part that user用鼠标拉上选中的
 
+
+
+link related pseudo-selector
+a: link{}                   CSS2里就4个，基本都是跟着anchor 这个link走的
+ : visited {}               被点击过了的
+ : active {}                正在被点击的大概一秒左右
+ : hover {}
+ : focus {}                 文字或什么被选中了，就是拉一下变蓝那时候
+
+
+p: first-child {}             p的的第一个child
+ : last-child {}
+ : first-of-type {}           第一个p的这类
+ : last-of-type {}
+
+
+
+
 @font-face {                            web-font先声明 然后和local一样用
   font-family:
   src
