@@ -212,6 +212,10 @@ form imput[type='submit'] {width: 100px}        就是找only form input element
 [class='className']           和 .className效果一样
 [id='idName']           与 ＃idName效果一样。
 
+a[href^=′http://mysite′]          找开头是http://mysite的href
+img[src$=′.png′]                  match 结尾
+a[href*=′google′]                 match 中间任意位置的substring
+
 
 #boxout * p {border:1px solid green; }      这样可以找id下所有element再下的p tag就是paragraph不能是#boxout的direct child
 
@@ -251,3 +255,19 @@ background: linear-gradient(#90, red, blue);            可以让背景颜色在
 background: radial-gradient(#90, red, blue);         椭圆形放射的变颜色
             radial-gradient(circle, #90, red, blue);          变成圆形
             radial-gradient(80%, 20%, #90, red, blue);        调整宽高
+
+background-clip: border-box;            决定background apply到哪里，这里是一直到border
+               : padding-box;           延伸到padding area
+               : content-box            只在content的背景有
+               : initial;
+               : inherit;
+
+background-origin: border-box;          用来决定背景图片的左上角从哪开始。
+                 : padding-box;
+                 : content-box;
+
+
+
+div > em {                immediate child Selector
+}
+div + span {}             兄弟selector，对紧跟在div后的span进行style
