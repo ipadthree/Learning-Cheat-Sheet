@@ -15,6 +15,8 @@ position: relative; top bottom left right都是指距离top left等的距离，�
 
 border-radis: 35px;
               50%; 控制element的角变圆
+              1px 2px 3px 4px;            从top－left开始顺时针转
+也有border-top-right-radis:   这种
 
 z-index: 10;   z demision上，决定屏幕中谁在谁上面。大的在上面
 
@@ -247,10 +249,22 @@ Picas:
 
 
 color是forehead的color，
+color: hsl(60, 100%, 50%);
+            第一个值是选色盘上的角度，360度，超过360从新转。
+            第二个是saturation，
+            第三个是亮度，50%最好，往下黑，往上到100%变白。
+
+       hsla（60， 100%， 50%， 0.3）就是加了opacity
+
 background-color(或者是直接background)是背景的颜色
 
 background: linear-gradient(#90, red, blue);            可以让背景颜色在不同颜色中渐变 这是vertical的
             linear-gradient(90deg, #90, red, blue);       这样事水平的
+
+CSS3里也可以背景同时用多个图片
+background: url('1.gif') top left no-repeat,
+            url('2.gif') top right no-repeat,
+            url('3.gif') left repeat-y,
 
 background: radial-gradient(#90, red, blue);         椭圆形放射的变颜色
             radial-gradient(circle, #90, red, blue);          变成圆形
@@ -266,8 +280,35 @@ background-origin: border-box;          用来决定背景图片的左上角从�
                  : padding-box;
                  : content-box;
 
+background-size: wwpx hhpx;         用来设置背景图片height，width
+                 也可用百分比什么的
+
 
 
 div > em {                immediate child Selector
 }
 div + span {}             兄弟selector，对紧跟在div后的span进行style
+
+
+
+border-color: #888;             改变border的color 或者可以用四个shorthand
+border-left-color:              分别设置color
+      -right-
+      -top-
+      -bottom-
+
+border-style: dotted;           border的style，也可以用四个shorthand，有这么多attribute：
+                                dashed, solid, double(两个线), 后面这几个都是有两种颜色 groove, ridge, inset, outset
+也有border-top-style:      这种
+
+
+
+border-image-source: url('border.png');             load要当成border的图片
+border-image-width: 130px 280px 130px 280px;        这是要变成的新border的上右下左的border width,也可以缩写成一个或两个值
+border-image-slice: 49.99% 49.99% 49.99% 49.99% ;   这是原来图片要裁减的的4个角都裁多少的百分比。亦可以是px，亦可以缩写成2个或一个值。
+
+
+box-shadow: 15px 15px 10px 10px #888;    blur的颜色    （还可以最后在颜色后加inset让阴影往里）
+                |      |    blur的长度（optional）
+                |      ->blur radius
+                ->竖直和水平的 offset 就是阴影离content的距离
