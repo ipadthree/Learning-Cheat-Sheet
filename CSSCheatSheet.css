@@ -7,6 +7,7 @@ text-overflow: ellipsis; 加"..."       overflow的文字该怎么处理
               white-space: nowrap;
               overflow: hidden;
             ｝
+word-wrap: break-word;          可以强行把长词句压倒下一行，不overflow
 
 position: relative; top bottom left right都是指距离top left等的距离，确定他和他应该在的位置的相对位置。
           absolute; top bottom left right确定和他nearest ancestor的位置      /*element就会被从document中提出来，其余element就会占用空出来的空间？*/
@@ -312,3 +313,12 @@ box-shadow: 15px 15px 10px 10px #888;    blur的颜色    （还可以最后在�
                 |      |    blur的长度（optional）
                 |      ->blur radius
                 ->竖直和水平的 offset 就是阴影离content的距离
+
+text-shadow:              也和上面的一样。
+
+
+box-sizeing: content-box;             就是指定height 和 width apply到哪里的范围。
+             border-box;
+
+outline: #444, thin, dashed;          改变outline box focus时候的style
+outline-offset: 10px;                 这个style的offset。
