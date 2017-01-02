@@ -1,0 +1,16 @@
+<input type="text">             这就是一个文本输入框
+<input type="text" placeholder="this is placeholder text">        加一个placeholder
+然后用form element wrap 输入框，form element就是个传信息给server的打包container
+<form action="/url-where-you-want-to-submit-form-data">
+  <input type="text">
+  <button type="submit">this button submits the form</button>         在form里加个button type 是submit就可以连着文本输入信息传给server
+</form>                                     把输入的信息提交给server
+
+
+<input type="text" required>        加这个到form里，这样user必须要在文本框里写东西才能点击提交。
+
+<label><input type="radio" name="indoor-outdoor">Indoor</label>           加这个到form里，就是创建勾选框 radio用于只能选一个结果，给一个answer，name attribute要一样。type是radio，属于input element
+
+<label><input type="checkbox" name="personality"> Loving</label>          加这个到form里，是用于multiple的answer，结构和radio一样。
+
+<label><input type="checkbox" name="personality" checked> Loving</label>      加checked就是让这个default就是被选中的。
