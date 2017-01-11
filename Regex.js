@@ -41,4 +41,26 @@ const a = /[^01]/         invert, 表示不找有01的
 
 /^\d+$/                 表示从头到尾都是数字，^表示开头 $表示结尾
 /^!/                    string starts with exclamation
-  
+
+\b 表示这是word和非word之间的边界。一边是word另一边是除了word之外的任意。string开头结尾啊 数字啊什么都行。
+
+var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;          | 表示或者选择。
+console.log(animalCount.test("15 pigs"));
+// → true
+
+［01］ 表示0或1  ［ou］ 表示o 或者 u
+
+string有replace function,
+string.replace('/\w/g', 'a')          表示把字母全换成a，g表示global，对所有的match都作用。不加就只有一次。
+console.log(
+  "Hopper, Grace\nMcCarthy, John\nRitchie, Dennis"
+    .replace(/([\w ]+), ([\w ]+)/g, "$2 $1"));            把lastname, firstname的格式变成 first last， $2, $1 表示第二场match的内容和第一次match的内容，最多能到$9，类似于一种variable。
+// → Grace Hopper
+//   John McCarthy
+//   Dennis Ritchie
+
+
+console.log("  word".search(/\S/));     .search会找第一个出现的位置，第一个不是space的w是2
+// → 2
+console.log("    ".search(/\S/));         找不到就返回－1
+// → -1
