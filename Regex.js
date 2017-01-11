@@ -22,3 +22,23 @@ console.log(dateTime.test("30-01-2003 15:20"));
 /\d*/           重复0～多次
 
 const neighbor = /neighbou?r/             ？表示u可以出现或不出现。
+
+const a = /\d{4}/;        表示必须数字出现4次
+          /\d{2,4};       表示数字出现最少两次 最多4次。
+          /\d{5, }        five or more times.
+
+
+用parentheses把一些character连成一个整体。
+var cartoonCrying = /boo+(hoo+)+/i;             这个i表示让regex case insensitive
+console.log(cartoonCrying.test("Boohoooohoohooo"));
+// → true
+
+var match = /\d+/.exec("one two 100");          exec 可以return null 如果没找到，找到了也会返回info
+match.index     从哪里match开始。
+
+
+const a = /[^01]/         invert, 表示不找有01的
+
+/^\d+$/                 表示从头到尾都是数字，^表示开头 $表示结尾
+/^!/                    string starts with exclamation
+  
