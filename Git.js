@@ -12,3 +12,10 @@ git push origin :old-name new-name
 3. Reset the upstream branch for the new-name local branch.
 Switch to the branch and then:
 git push origin -u new-name
+
+git branch -d branch-name           删除local branch
+
+
+
+git config --global user.email "your_email@example.com"       这样是globally设置github的邮箱，不加 最后的邮箱就是查看邮箱
+git config user.email "your_email@example.com"                只在一个local repository里改变邮箱或查看邮箱。
