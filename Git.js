@@ -19,3 +19,8 @@ git branch -d branch-name           删除local branch
 
 git config --global user.email "your_email@example.com"       这样是globally设置github的邮箱，不加 最后的邮箱就是查看邮箱
 git config user.email "your_email@example.com"                只在一个local repository里改变邮箱或查看邮箱。
+
+Resetting remote branch to 之前的 commit
+在你的这个local branch上
+git reset --hard <commit-hash>
+git push -f origin 《branch name》
