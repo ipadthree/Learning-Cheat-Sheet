@@ -1,4 +1,21 @@
 el 指的是DOM, 每个backbone view 都有一个el refer她们。
+$el 也是自动存在在View里的。相当于$(view.el)     就是加了个jQuery
+
+var TodosView = Backbone.View.extend({
+  tagName: 'ul', // required, but defaults to 'div' if not set
+  className: 'container', // optional, you can assign multiple classes to
+                          // this property like so: 'container homepage'
+  id: 'todos' // optional
+});
+
+var todosView = new TodosView();
+console.log(todosView.el); // logs <ul id="todos" class="container"></ul>         这个创建了Dom，但是没有append it to Dom
+
+也可以把view强加给一个已经存在的element上：
+el: '#footer';
+
+var todosView = new TodosView({el: $('#footer')});
+---------------------------------------------------------------------------------
 
 _.debounce(function, wait, [immediate])         返回一个新function 等几微秒
 
@@ -38,3 +55,10 @@ Person.set({name: 'Jeremy'}, {silent: true});     加了silent： true 就是改
 
 Views 不含html markup，含presentation的logic，一般都是通过template表现。
 Views render() 与Model的change()绑定可以有效只render一部分，不render整个page。
+
+
+
+var button2 = $('<button></button>');
+view.setElement(button2);                       setElement可以把其他的html element加到这个view里，
+view.setElement('<p><a><b>test</b></a></p>');
+console.log(view.$('a b').html()); // outputs "test"
