@@ -30,6 +30,7 @@ scenario "A user can change their name and job title via edit profile", :p2 do
       @home_page = @user.login
       debugger                        可以加一个debugger，这样otter 跑起来的时候就会在这停。然后键入step是一步步往下走，continue是直接往下走。
       @home_page.left_nav.create_PMChat.click       ＃home_page的left_nav component的create_PMChat component; 进行一个click。
+      //找到create_PMChat的过程，要先从@home_page这个所有东西都在的namespace开始找到定义create_PMChat的left_navfile，然后找到这个component里的create_PMChat。
     end
   end
 
@@ -48,3 +49,5 @@ EXPERIMENTS: direct_messaging__phase_one=Enabled
 这个就让整个file都在experiment 开启的状态里了。
 
 #---------------------------------------------------------
+section :masthead, Web::Sections::Masthead, "header.main-header"
+Web::Sections::Masthead表示Masthead 是Sections下面的component，which is Web下面的component。
