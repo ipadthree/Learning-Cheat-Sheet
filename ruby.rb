@@ -1,4 +1,4 @@
-rspec /Users/jiayiliang/Dev/otter/spec/web/profile/edit_profile_1_spec.rb:9
+rspec /Users/jiayiliang/Dev/otter/spec/web/profile/edit_profile_1_spec.rb:9       必须要加line number，从哪个test开始。
 gem install bundler
 bundle install
 bundle exec rspec spec/web/authentication/login_logout_spec.rb
@@ -51,3 +51,8 @@ EXPERIMENTS: direct_messaging__phase_one=Enabled
 #---------------------------------------------------------
 section :masthead, Web::Sections::Masthead, "header.main-header"
 Web::Sections::Masthead表示Masthead 是Sections下面的component，which is Web下面的component。
+
+#---------------------------------------------------------
+
+expect(@home_page.left_nav.has_private_message_section?).to be(true)     这样看这个component有没有出现。
+@home_page.left_nav.has_private_message_section?是能够return true 或者 false
