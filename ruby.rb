@@ -56,3 +56,19 @@ Web::Sections::Masthead表示Masthead 是Sections下面的component，which is W
 
 expect(@home_page.left_nav.has_private_message_section?).to be(true)     这样看这个component有没有出现。
 @home_page.left_nav.has_private_message_section?是能够return true 或者 false
+
+Chris 说这种syntax好：
+expect(@home_page).to have_create_message_lightbox
+have_XXXXX    这种syntax等于has_XXXXX?    都能return true
+
+#------------------------------------------------------------------------------------------
+
+在 teamcity 里projects的otter里的One off 的最右边run button旁边的...按钮里，的parameters里，可以在Branch to Checkout (Otter/Otter_API)里
+选择哪个branch来跑otter test。
+Environment variables里的env.EXPERIMENTS里选择哪个experiment turned on
+env.FRONTEND_RELEASE 里选那个mode来跑。
+
+跑一个自己的test parallel 30遍，检查。
+rake loop["30","SAUCE=true rspec spec/web/authentication/login_spec.rb:15"] > output.txt
+这个需要在bash上跑，就直接打bash，或zsh在command line里切换。
+加上sauce＝ture可以让otter在saucelab上测试，不用在local的browser上测试了。
