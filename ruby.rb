@@ -72,3 +72,8 @@ env.FRONTEND_RELEASE 里选那个mode来跑。
 rake loop["30","SAUCE=true rspec spec/web/authentication/login_spec.rb:15"] > output.txt
 这个需要在bash上跑，就直接打bash，或zsh在command line里切换。
 加上sauce＝ture可以让otter在saucelab上测试，不用在local的browser上测试了。
+#------------------------------------------------------------------------------------------
+
+opt_out_private_message_education_banner(@user)
+otter的机制是找页面上显示了什么，比如一个button被toast挡住了，这个button就在ottr里被block了，就出错了。上面这个就可以让otter
+ignore这个toast，依旧觉得button有用，但是这个syntax应该是case by case 的，下一次就要再单写了。
