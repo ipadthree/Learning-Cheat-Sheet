@@ -36,7 +36,7 @@ return (
   </div>
 )             好的习惯是加上（），不加的话<div> 必须和return一行
 /------------------------------------------------------------------/
-
+props
 ReactDOM.render(
   <App />,
   document.getElementById('root')           这个就是把App这个别的文件创造的component加到页面上Id为root的 div 上
@@ -48,7 +48,7 @@ ReactDOM.render(
 );                                                        |
 class App extends React.Component {                       |
   render () {                                             |
-    return <h1 className="">{this.prop.txt}</h1>         <- 这样这就能接住得到这个prop的内容      所以prop是在 <App />这地方instantiate时候给出的，然后在定义里用，（感觉有点反过来了啊。。）
+    return <h1 className="">{this.props.txt}</h1>         <- 这样这就能接住得到这个prop的内容      所以prop是在 <App />这地方instantiate时候给出的，然后在定义里用，（感觉有点反过来了啊。。）
   }
 }
 App.propTypes = {                                   可以在定义App componnet的这个file里（但是是App componnet外面）定义App这个有什么prop的type。
@@ -82,3 +82,18 @@ render () {
     </div>
   )
 }
+/----------------------------------------------------------------------------------------------------------------------------------/
+一个react component render 另一个component。
+render () {
+    return (
+      <div>
+        <h1 className="">{this.state.txt}-------{this.state.cat}</h1>
+        <Widget update={this.update.bind(this)} />
+        <Widget update={this.update.bind(this)} />
+        <Widget update={this.update.bind(this)} />
+      </div>      |
+    )             |
+  }               |
+}                 ---------------------------------------------|| 就是在一有变化（onchange）的时候就调用update这个props，是哪个呢，在instantiate的时候定义了是定义的update这个function。       
+                                                               \/
+const Widget = (props) => <input type="text" onChange={props.update}/>    这种stateless的定义 输入的argument是props。
