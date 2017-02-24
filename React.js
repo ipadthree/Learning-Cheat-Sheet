@@ -94,6 +94,90 @@ render () {
       </div>      |
     )             |
   }               |
-}                 ---------------------------------------------|| 就是在一有变化（onchange）的时候就调用update这个props，是哪个呢，在instantiate的时候定义了是定义的update这个function。       
+}                 ---------------------------------------------|| 就是在一有变化（onchange）的时候就调用update这个props，是哪个呢，在instantiate的时候定义了是定义的update这个function。
                                                                \/
 const Widget = (props) => <input type="text" onChange={props.update}/>    这种stateless的定义 输入的argument是props。
+/----------------------------------------------------------------------------------------------------------------------------------/
+props.children
+
+class App extends React.Component {
+  render() {
+    return <Button>I <Heart /> React</Button>
+  }                     |
+}                       |
+                        ---------------|   props.children就是代表了之上的 I <Heart /> React, <Button>中间这些就存到了props.children里
+const Button = (props) => <button>{props.children}</button>      ***In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children.
+
+class Heart extends React.Component {
+  render(){
+    return <span>&hearts;</span>
+  }
+}
+/----------------------------------------------------------------------------------------------------------------------------------/
+refs
+
+class App extends React.Component {
+  constructor (){
+    super();
+    this.state= {
+      a: ""
+    }
+  }
+  update(e){
+    this.setState({
+      a: this.refs.a.value,
+      b: this.refs.b.value})
+  }               |
+  render(){       |
+    return (      |
+      <div>       ||
+        <input    \/
+          ref="a"                                 配合着就能够决定哪对应哪里。
+          type="text"
+          onChange={this.update.bind(this)} />
+          {this.state.a}
+          <hr />
+        <input
+          ref="b"
+          type="text"
+          onChange={this.update.bind(this)} />
+          {this.state.b}
+      </div>
+    )
+  }
+}
+
+/----------------------------------------------------------------------------------------------------------------------------------/
+
+componentWillMount(){                       在component render之前，就发生一次。
+  console.log('componentWillMount');
+}
+render
+componentDidMount(){                        在render之后发生，也就一次。
+  console.log('componentDidMount')
+}
+componentWillUnmount(){                     element要被unmount的时候发生，如果已经unmount，再unmount，也不会发生。
+  console.log('componentWillUnmount')
+}
+
+
+class Wrapper extends React.Component {
+  mount() {
+    ReactDOM.render(<App />, document.getElementById('a'));                   加App component到 id＝a的这里
+  }
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById('a'))             把id＝a的div里的东西都unmount掉。
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.mount.bind(this)}>Mount</button>                所以这三个element现在page上出现。
+        <button onClick={this.unmount.bind(this)}>Unmount</button>
+        <div id='a'></div>
+
+      </div>
+    )
+  }
+}
+
+export default Wrapper                      就会先render Wrapper这个 component
