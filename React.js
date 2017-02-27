@@ -181,3 +181,17 @@ class Wrapper extends React.Component {
 }
 
 export default Wrapper                      就会先render Wrapper这个 component
+/----------------------------------------------------------------------------------------------------------------------------------/
+问题：这update和mount有什么不同？  答：mount是表示component被加载到了页面上（一共就一次出现可能），update是只要更新就调用，能出现很多次。
+
+componentWillReceiveProps(nextProps){                                   这个就是在componentWillMount前查看是不是有新的props，有的话就将要改变的props传给 argument nextProps。
+  this.setState({increasing: nextProps.val > this.props.val})
+}
+
+shouldComponentUpdate(nextProps, nextState){
+  return nextProps.val%5 == 0;              这个也是build-in react的function，返回个bool值，true 的话才更新component。
+}
+
+componentDidUpdate(prevProps, prevState) {
+  console.log()       只有component真update后才被调用。
+}
