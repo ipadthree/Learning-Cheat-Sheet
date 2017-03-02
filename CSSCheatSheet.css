@@ -322,3 +322,16 @@ box-sizeing: content-box;             就是指定height 和 width apply到哪�
 
 outline: #444, thin, dashed;          改变outline box focus时候的style
 outline-offset: 10px;                 这个style的offset。
+
+transition是用来指明从一种css的状态到另一种状态变化时的过程中怎么变化的。这个东西一般放在变化前的css里
+（没有太看懂，好像意思是说如果放在变化后结果的css里的话，transition回来的时候就不会有transition效果了，比如transition 放在.example:hover里，
+  只有变hover有transition效果，那么从hover状态变为原来状态时，就不会有transition的效果。只有一半。）
+.example {
+    transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay];
+}
+.example:hover {        //要配合这个使用，这是结束后的结果样子。
+    hahaha
+}
+
+transition-property 用来指明是哪个值你要transition，可以是 background-size, width 这些，也可以写个 all 表示所有你要transition的property都被这个transition管。
+有些property是不能 transition的，因为不 animatable 有一个表可以看

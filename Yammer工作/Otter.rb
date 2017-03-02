@@ -3,6 +3,7 @@ gem install bundler
 bundle install
 bundle exec rspec spec/web/authentication/login_logout_spec.rb
 ruby -v
+跑otter的test之前一定要连上vpn
 
 Otter有用的资料
 https://github.com/natritmeyer/site_prism
