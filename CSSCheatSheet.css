@@ -335,3 +335,22 @@ transition是用来指明从一种css的状态到另一种状态变化时的过�
 
 transition-property 用来指明是哪个值你要transition，可以是 background-size, width 这些，也可以写个 all 表示所有你要transition的property都被这个transition管。
 有些property是不能 transition的，因为不 animatable 有一个表可以看
+
+
+keyframes
+
+@keyframes this-is-identifier {           这里设置关键帧
+  0% /*相当于 from */ {
+    font-size: 10px;
+  }
+  30% {
+    font-size: 15px;
+  }
+  100% /*相当于 to */{
+    font-size: 12px;
+  }
+}
+
+#box {                                        这里告诉如何使用这个定义的关键帧。
+  animation: this-is-identifier 2s infinite;
+}
