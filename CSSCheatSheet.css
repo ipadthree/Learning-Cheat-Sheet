@@ -351,6 +351,6 @@ keyframes
   }
 }
 
-#box {                                        这里告诉如何使用这个定义的关键帧。
+#box.animation {                                        这里告诉如何使用这个定义的关键帧。
   animation: this-is-identifier 2s infinite;
 }
