@@ -40,6 +40,8 @@ define(function (require) {
 Repository.prototype.register 被call的时侯会调用 Repository.prototype._define，这个_define function就会加上 static method from static_methods.js （应该也有 instance_methods.js）
 这些static methods就有什么 findOrCreate, create, save 这些 function 方便任何东西使用
 
+还有一个dynamic service layer 具体什么也不太清楚：
+var dslMethods = require('core/lib/data/dsl_methods');
 
 
 
@@ -59,3 +61,16 @@ oauth2_authenticator.js     获得authentication。
 
 
 Bootstrap     !!!－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－!!!
+
+
+yammer_bootstrap.js    就是每次refresh page后都会调用的。    主要是一些promise 来获得需要获得的data，以及token
+                       有firstTry() secondTry()   两个function， 就是试两遍。
+
+home_main.js           bootstrap好了之后就从这个文件开始render UI component。用每一个component的run()来开始run
+
+bootstrap_api.js        run（）有yam.ready()     和window.onload()有点像，就是看yam是不是好了，好了就call callback function。
+
+
+entries.js          里就是webpack弄的asset，具体怎么工作我也还不太清楚。
+
+index.html          就是static html用的类似于 skeleton 的 html
