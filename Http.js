@@ -24,7 +24,7 @@ PUT  更新用
 DELETE    删除resource
 
 
-Client 发出 request 后 server 就要 返回给 client Status Code  ----------------------------------
+Client 发出 request 后 server 就要 返回给 client Status Code （还有message body） ----------------------------------
 
 1XX HTTP 1.1 新出的， 没什么用
 
@@ -39,4 +39,30 @@ Client 发出 request 后 server 就要 返回给 client Status Code  ----------
         403 Forbiden      deny access
 
 5XX Server Error
-        500 
+        500
+
+---------------------------------------------------------------------------
+
+message header 和 body中间必须要空一行。
+
+Header 有几种：
+
+General header 是 request，response都能用的
+
+general-header = Cache-Control
+               | Connection
+               | Date
+               | Pragma
+               | Trailer
+               | Transfer-Encoding
+               | Upgrade
+               | Via
+               | Warning
+
+。。。。。。。   比较多， 先省略不记了
+
+记得在Chrome Dev Tool 里的 Network 看的时候可以看 review source 是看真正的原包什么样
+
+-----------实--战--使--用--------------------
+
+主要使用 jQuery.ajax(settings) 来进行 http 请求
