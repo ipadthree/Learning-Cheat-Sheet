@@ -66,3 +66,14 @@ general-header = Cache-Control
 -----------实--战--使--用--------------------
 
 主要使用 jQuery.ajax(settings) 来进行 http 请求
+
+By passing a settings object with the beforeSend callback, we can modify the request headers.
+The callback receives the jqXHR (jQuery XMLHttpRequest) object that exposes a method, called setRequestHeader() to set headers.
+
+$.ajax({
+    url: 'http://www.articles.com/latest',
+    type: 'GET',
+    beforeSend: function (jqXHR) {
+      jqXHR.setRequestHeader('Accepts-Language', 'en-US,en');
+    }
+});
