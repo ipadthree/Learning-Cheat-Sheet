@@ -1,0 +1,42 @@
+Default TCP/IP Port is 80
+
+Client 送 HTTP request message, 得到 HTTP response message
+现在的HTTP是 1.1 version
+
+HTTP request message 就是通过 url 完成的
+
+http://www.domain.com:1234/path/to/resource?a=b&x=y
+  |         |           |         |           |
+  |         |           |         |          query
+  |        host        port       |
+  |                           resource path
+  |
+protocol
+
+URL 可以告诉我们哪个host我们需要找到。但是具体做什么action 需要 HTTP verb 指明：
+
+GET   这时 URL 包含 server 找到location 并返回的所有信息。
+
+POST    create 新 resource     通常要带上payload to specify the new resource
+
+PUT  更新用
+
+DELETE    删除resource
+
+
+Client 发出 request 后 server 就要 返回给 client Status Code  ----------------------------------
+
+1XX HTTP 1.1 新出的， 没什么用
+
+2XX 成功processed
+      200 OK
+
+3XX Redirection     需要用户再做 additional action，通常是去 different url to fetch the resource时用
+
+4XX Client Error        server 觉得 client 有错的时候 返回给client
+                                比如 client request invalid resource 或者 make a bad request
+        404 Not found    表示client 要的 resource 不再server上。
+        403 Forbiden      deny access
+
+5XX Server Error
+        500 
