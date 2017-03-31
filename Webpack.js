@@ -1,4 +1,5 @@
 干什么用的：Take multiple JS files into single bundle, using commonJS style. ！只在client side！ 做出一个 web app， 并且还能bundle html css
+webpack.config.js
 
 webpack 自带server，once your js code bundle，changes， it changes
 
@@ -21,9 +22,10 @@ const config = {
                                                     使他先被打包，能被使用。
   },
   output: {
-    path: './build',                              !!!!真执行的时候他告诉我要放absolute path!!!!output bundle放哪。
+    path: './build',                              !!!!真执行的时候他告诉我要放absolute path!!!!output bundle放哪。或者 path: 'build' ？试试这个也行
     filename: '[name]-bundle.js'                  output bundle 叫什么   [name] template 会被 app（我们在上面entry里写的）替换
   },
+  devServer: {},
   devtool: 'source-map',                          这行是说we want webpack to create a source-map 这样我们就能看到从reverse 从 bundle找到source code哪来的
   module: {},                                     这是specify loader的
   resolve: {
@@ -54,7 +56,7 @@ webpack loader 主要是个翻译器，能把ES6 或者 JSX 翻译成 plain java
 npm install babel-loader babel-core --save-dev    先安装babel 用 npm 才能在接下来中用。
                   ｜           ｜
                   ｜           ｜
-            这个是loader       这个是真babel
+            这个是loader       这个是真babel必须要有的
 装完之后就会在 npm 的 package.json 的 devDependencies里出现，也就在 npm node_modules folder里出现可以用了。
 
 所以在这我理解了 npm 和 webpack 的关系： npm是 管所有的dependency的，比如我要用 jquery，backbone，在我client app里，我必须要用npm 安装
@@ -62,12 +64,41 @@ npm install babel-loader babel-core --save-dev    先安装babel 用 npm 才能�
 而webpack就在这有了dependency的基础上 把这些dependency 加上你自己写的file，连带着什么 loader翻译器，全都打包成一个bundle，方便使用。要没有webpack，就是
 散碎的各种小文件。
 
+在babel 5 之前，只要用babel 所有的东西都是统一transpile的，现在 babel6 后，可以set stage，stage 是ECMAscript 的 proposal，要加什么feature。
+这里对应 preset这个东西
+
+npm install babel-preset－es2015 babel-preset-react --save-dev
+这些loader都要 先 npm install，他们是写小程序 别人写的
+
 module: {
   loaders: [                              loaders是一个array of all loaders we need。并且loader的需要在一个object里配置。
     {
-      test: /\.js$/,
+      test: /\.js$/,                      表示我们要load什么样的file
       exclude:/(node_modules)/,           表示我们希望什么file 不用 这个loader load，这里是node_modules整个文件都不管。
       loader: 'babel',                    用babel loader
+      query: {                                    这个对应babel 6 告诉这个loader,which is babel,
+        presets: ['es2015', 'react']              用 presets specify 什么需要用 babel 来transpile ？？？？？还可以加个什么 .babelrc 把query这部分东西加到那里面？？？？？？
+      }
     }
   ],
 }
+
+
+
+
+webpack-dev-server
+用nodejs 的 express 的server，用socket.io 打开socket，听到有code change 就 reload
+也需要 npm install webpack-dev-server --save-dev
+
+devServer: {
+  inline: true,
+  contentBase: './build',     server 要从哪跑bundle
+  port: 3000                  在哪个port上run显示出来
+},
+
+
+npm package.json 里的scripts 是用来跑 scripts的 （废话。。。）
+"scripts": {
+  "build": "webpack",                     输入 npm build, 就相当于跑 webpack， 就能bundle打包出来
+  "start": "webpack-dev-server"           输入 npm start   就开始跑server了
+},

@@ -1,3 +1,19 @@
+backbone 里 children 的 render 要在parent render 完实现
+比如 在parent.js里
+initialize() {
+  const child = new Children();
+}
+这时child 和 parent 一起render child 就有可能找不到parent 应该有的东西。
+需要
+initialize() {}
+等parent 建设完了，
+在parent 的 render() 里
+render(){
+  const child = new Children();
+}
+这样让child have access to parent的所有东西。
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
 el 指的是DOM, 每个backbone view 都有一个el refer她们。
 $el 也是自动存在在View里的。相当于$(view.el)     就是加了个jQuery
 
