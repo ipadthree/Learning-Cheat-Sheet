@@ -13,6 +13,9 @@ render(){
 }
 这样让child have access to parent的所有东西。
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+AutoRenderMixin 有了后，就会先render所有的component，虽然不在页面上，但是也已经有了。
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
 el 指的是DOM, 每个backbone view 都有一个el refer她们。
 $el 也是自动存在在View里的。相当于$(view.el)     就是加了个jQuery
