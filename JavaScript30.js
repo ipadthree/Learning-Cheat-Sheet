@@ -23,4 +23,31 @@ box-shadow: 0 0 1rem #ffc600;
 
 ---
 <kbd>ipsum</kbd>          就是一种<span>
-The HTML <kbd> element represents user input and produces an inline element displayed in the browser's default monospace font.
+The HTML <kbd> element represents user input and produces an inline element displayed in the browser's default monospace font.'
+
+---
+window.addEventListener('keydown', (e) => {});      js vanilla way of listening event， pass in event as e。有event所有信息。
+
+---
+const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);     找全部是 querySelectorAll
+console.log(audio)你就会发现这种返回的就是一个纯html element，没有乱七八糟很多东西，不像jQuery返回的是一个包含很多东西的object
+
+---
+<audio src=""></audio>
+像上面找到这个element后，就可以用
+audio.currentTime = 0;   这个相当于rewind 这个音乐 to start，拖进度条到从开始播放。要不然每次播放完了进度条走到最后了，下一次没法看啊
+audio.play()来播放这个音乐。
+
+---
+key.classList.add('playing') vanilla javascript way ===
+key.addClass('playing'); in jQuery
+
+key.classList.remove('playing')
+key.classList.toggle('playing')
+
+---
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener(...))      要loop一个个给每个element加listener，要不直接夹在key上就是直接给keys array加listener了
+
+---
+keys.forEach(key => key.addEventListener('transitionend', () => {}))   css的 transition 结束是会有这个event
