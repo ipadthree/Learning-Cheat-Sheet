@@ -51,3 +51,10 @@ keys.forEach(key => key.addEventListener(...))      要loop一个个给每个ele
 
 ---
 keys.forEach(key => key.addEventListener('transitionend', () => {}))   css的 transition 结束是会有这个event
+每一项transition都会trigger 自己的一个 event，所以可能出现好多个event
+
+
+
+
+
+------------------------------- Day 2 ----------------------------

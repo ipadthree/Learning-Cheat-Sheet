@@ -195,3 +195,6 @@ shouldComponentUpdate(nextProps, nextState){
 componentDidUpdate(prevProps, prevState) {
   console.log()       只有component真update后才被调用。
 }
+
+/-----------------------------------------------------------------------------------------------/
+JSX 里的{} 里面部分会被当成javascript code 执行。
