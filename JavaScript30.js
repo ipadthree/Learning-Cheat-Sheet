@@ -58,3 +58,21 @@ keys.forEach(key => key.addEventListener('transitionend', () => {}))   css的 tr
 
 
 ------------------------------- Day 2 ----------------------------
+在需要target的css element上：
+.hand{
+  transform-origin: 100%;       x轴改变 transform的中点，default是50%
+  transform: rotate(90deg);     让default的状态顺时针转90deg
+  transition: all .5s;
+  transition-timing-function: ease-in-out;      改变transition的效果
+}
+
+---
+setInterval(callback(), 1000);      多产时间call 一次 callback function 以millisecond为单位。
+
+---
+const now = new Date()      自动就是当前时间。
+const sec = now.getSeconds();   获得now这个值里的秒
+因为是setInterval，每次都重新建一个新 Date()  所以秒数都变
+
+---
+secondHand.style.transform = `${second}deg`;      这样就是在js里给一个element修改style的项目
