@@ -22,3 +22,14 @@ $("#element")[0].trigger('click');
 you would get an error that the element has no trigger method defined.
 
 Be aware that $('#element')[0].click(); will not work in Safari, on certain elements. You will need to use a workaround.
+
+---
+Array.prototype.map() method creates a new array with the results of calling a provided function on every element in this array.
+var roots = numbers.map(function(x) {
+   return x * 2;
+});                                                 不改变原来值，但是返回新值
+
+Array.prototype.forEach() method executes a provided function once for each array element. 就是只是运行一下，并不改变原来值，(don't mutate state)
+没有返回值
+
+---
