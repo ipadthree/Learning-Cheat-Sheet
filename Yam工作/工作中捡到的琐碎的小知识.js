@@ -32,4 +32,14 @@ var roots = numbers.map(function(x) {
 Array.prototype.forEach() method executes a provided function once for each array element. 就是只是运行一下，并不改变原来值，(don't mutate state)
 没有返回值
 
----
+---{
+BannerSevices
+
+用于保存一些 flag数据，或者count数据什么的。这些数据保存在services 里，
+工作原理是：有一些key，事先确定好的。在 banners_bundle.js 的bootstrap里事先约定好
+然后
+import Banners from 'models/banner';
+const Count = Banners.findById(NewEducationToast.TOAST_COUNT);
+就可以得到这些key 的 value
+这些值都是user sepcific的，传user id的过程是behind the scene的
+所以这样可以帮助储存user的数据，因为不存在local storage，所以user可以 cross browser的查看存在server上得信息。
