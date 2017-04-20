@@ -43,3 +43,12 @@ const Count = Banners.findById(NewEducationToast.TOAST_COUNT);
 就可以得到这些key 的 value
 这些值都是user sepcific的，传user id的过程是behind the scene的
 所以这样可以帮助储存user的数据，因为不存在local storage，所以user可以 cross browser的查看存在server上得信息。
+
+---
+Ideally you should only have one expectation per it block, and that expectation should match the description in the block.
+That way, when it fails, you know exactly what failed.
+
+If you think they are different things, you should split in two.
+If you think they are the same thing, maybe one of them is redundant, and you dont need both?
+
+Never use MAGIC WORD in the code.

@@ -46,7 +46,7 @@ key.classList.remove('playing')
 key.classList.toggle('playing')
 
 ---
-const keys = document.querySelectorAll('.key');
+const keys = document.querySelectorAll('.key');       返回的是nodelist， nodelist 和 array的区别是 nodelist包含的 function 少，主要只有forEach
 keys.forEach(key => key.addEventListener(...))      要loop一个个给每个element加listener，要不直接夹在key上就是直接给keys array加listener了
 
 ---
@@ -75,4 +75,58 @@ const sec = now.getSeconds();   获得now这个值里的秒
 因为是setInterval，每次都重新建一个新 Date()  所以秒数都变
 
 ---
-secondHand.style.transform = `${second}deg`;      这样就是在js里给一个element修改style的项目
+secondHand.style.transform = `${second}deg`;      `这样就是在js里给一个element修改style的项目
+
+
+------------------------- Day 3 ------------------------------
+
+CSS variables can be updated by javascript
+SASS 的是在compile time时候确定好，之后就不能改了
+
+---
+:root {               :root 就和 html的default 重置style一样，从根本上从新定义
+  --base: #ff6600;    创建CSS variable 并赋默认值
+  --spacing: 30px;        修改这些值，整个文件的值就都修改了
+  --blur: 10px;
+}
+
+img {
+  padding: var(--spacing);      这是如何使用这个css variable。     （SASS 里是$ sign？）
+  filter: blur(--var(blur));      用来改照片effect的//The filter property provides graphical effects like blurring, sharpening, or color shifting an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
+}
+
+---
+<input data-size='px' data-wes='aa'>
+如果html有这样一个 component，在 js里选中这个object 这就有一个 this.dataset, dataset是一个object：
+DOMStringMap{         有所有data-attribute的值
+  size:'px',
+  wes: 'aa'
+}
+
+---
+const suffix = this.dataset.size || '';    这个句子就会找this.dataset.size，如果没有的话，就返回''，这样就不至于返回
+                                      undefined，原来都不知道js的这种简单技巧。
+---
+document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+                                    |             |                   改变成这个值，suffix是px别忘了
+                                    |             ->找到要改变的值的key
+                                    ->用这个function设置文件里css的perperty
+
+
+------------------------- Day 4 ------------------------------
+console.table(arrayObjects)     可以在console中output出一个表
+
+---
+Array.map(), take in an array, return a new array, but same length. 相当于给array做了个加工生产出新array。
+
+---
+Array.sort()
+const ordered = a.sort((a,b) => a.year > b.year ? 1 : -1 )      sort就是来回比较两个值，把array里面的值都bubble 排序一遍。并且比较的是时候
+                                                              使用1 -1 来表示谁在前谁在后，拍好序返回新的array
+---
+Array.reduce()
+const red = a.reduce((total, inven) = > {
+  return total + inven
+}, 0);                                             reduce有两个传入值，第一个值，也就是total，
+                                                   总是之前作用结束产生的值，第二个就是每次loop到的array里的单个值。
+                                                   这里的第二个值，which is 0，是设定的total的初始值。要不然谁知道最一开始应该是多少

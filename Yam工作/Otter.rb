@@ -11,7 +11,7 @@ https://github.int.yammer.com/yammer/otter/wiki/Help-keep-Otter-Fast-and-Stable
 
 #---------------------------------------------------------
 创建的otter test都要end with _spec.rb
-可以建在otter的spec的web folder里
+otter自己写的测试文件可以建在otter的spec的web folder里
 
 section :notifications_dropdown_panel, NotificationsPanel, :qaid, "notifications_dropdown_panel"
 element :group_header, ".yj-nav-menu--group-header"
