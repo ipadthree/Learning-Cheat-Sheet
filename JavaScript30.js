@@ -46,7 +46,7 @@ key.classList.remove('playing')
 key.classList.toggle('playing')
 
 ---
-const keys = document.querySelectorAll('.key');       返回的是nodelist， nodelist 和 array的区别是 nodelist包含的 function 少，主要只有forEach
+const keys = document.querySelectorAll('.key');       返回的是nodelist， nodelist 和 array的区别是 nodelist包含的 function 少，主要只有forEach，可以用es6[...nodelist] spread into array
 keys.forEach(key => key.addEventListener(...))      要loop一个个给每个element加listener，要不直接夹在key上就是直接给keys array加listener了
 
 ---
@@ -122,11 +122,14 @@ Array.map(), take in an array, return a new array, but same length. 相当于给
 ---
 Array.sort()
 const ordered = a.sort((a,b) => a.year > b.year ? 1 : -1 )      sort就是来回比较两个值，把array里面的值都bubble 排序一遍。并且比较的是时候
-                                                              使用1 -1 来表示谁在前谁在后，拍好序返回新的array
+                                                              使用1 -1 来表示谁在前谁在后，拍好序返回新的array。1 表示在前，－1 表示在后
 ---
 Array.reduce()
 const red = a.reduce((total, inven) = > {
   return total + inven
 }, 0);                                             reduce有两个传入值，第一个值，也就是total，
-                                                   总是之前作用结束产生的值，第二个就是每次loop到的array里的单个值。
+                                                   总是之前作用结束产生的值，并且传入的function每次都要再次return 总的total值给下次使用
+                                                   第二个就是每次loop到的array里的单个值。
                                                    这里的第二个值，which is 0，是设定的total的初始值。要不然谁知道最一开始应该是多少
+---
+string.split(', ')    就以逗号和空格把string分开，得到个array
