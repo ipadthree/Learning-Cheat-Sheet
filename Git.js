@@ -24,3 +24,10 @@ Resetting remote branch to 之前的 commit
 在你的这个local branch上
 git reset --hard <commit-hash>
 git push -f origin 《branch name》
+
+
+git fetch   = git pull
+git merge
+
+git fetch
+git rebase origin/master
