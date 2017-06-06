@@ -78,3 +78,8 @@ rake loop["30","SAUCE=true rspec spec/web/authentication/login_spec.rb:15"] > ou
 opt_out_private_message_education_banner(@user)
 otter的机制是找页面上显示了什么，比如一个button被toast挡住了，这个button就在ottr里被block了，就出错了。上面这个就可以让otter
 ignore这个toast，依旧觉得button有用，但是这个syntax应该是case by case 的，下一次就要再单写了。
+
+
+#------------------------------------------------------------------------------------------
+
+otter 的 experiment 就是所有的experiment都是on 没有只turn on 一部分experiment，但是还留着另一部分experiment false 的。
