@@ -37,6 +37,10 @@ scenario "A user can change their name and job title via edit profile", :p2 do
 
 scenario就相当于jasmine里的describe，这就是写一个test case。
 
+binding.pry 也是一个debugger， 停住，并且能直接在命令行输入指令查看东西
+next 往下走
+continue 下一个break point
+
 #---------------------------------------------------------
 
 让otter跑一个在experiment里。
@@ -83,3 +87,14 @@ ignore这个toast，依旧觉得button有用，但是这个syntax应该是case b
 #------------------------------------------------------------------------------------------
 
 otter 的 experiment 就是所有的experiment都是on 没有只turn on 一部分experiment，但是还留着另一部分experiment false 的。
+
+#------------------------------------------------------------------------------------------
+
+EXPERIMENTS_TREATMENT_INDEX=0
+表示所有的experiment都set成了开开，所有experiment都开了，设成1可能会都关
+EXPERIMENTS_TREATMENT_INDEX=0 rspec ./spec/web/left_nav/private_message_spec.rb:10
+就是所有experiment都打开 跑这个test
+
+#------------------------------------------------------------------------------------------
+
+charles打开 local grunt proxy打开，就能跑local的 修改的yamjs code

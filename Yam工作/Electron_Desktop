@@ -1,0 +1,13 @@
+打开debug模式
+
+~ ᐅ cd ~          //到 user的folder
+~ ᐅ ls
+Applications   Desktop        Documents      Dropbox        Movies         Pictures       VirtualBox VMs powerlevel9k
+Blizzard       Dev            Downloads      Library        Music          Public         node_modules
+~ ᐅ code .bash_profile      打开这个file  加上这一行 export YAMMER_DEV_MENU='true'
+~ ᐅ source .bash_profile      重新跑一下这个file
+~ ᐅ open /Applications/Yammer.app   只能从terminal打开这个模式
+~ ᐅ
+
+
+.bash_profile 这里是设置Environment variable 他们选择从这里读取Environment variable 其实也可以从别的地方读
