@@ -29,3 +29,6 @@ function clearAllTimeout() {
 }
 
 //------------------------------------------------------------------------------------------//
+
+//Animation!!!
+//give distance, time as parameter, write a function can do animation that move a box from left side to right side.

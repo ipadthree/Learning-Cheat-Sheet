@@ -287,7 +287,7 @@ function sameNode(rootA, rootB, targetValue) {
 The DOMStore should be able to store a DOM Node and return the value associated with the particular Node.
 */
 /**
- * 如果不用Map的话，就把value直接存到node自己身上。
+ * 如果不用Map的话，就把value直接存到node自己身上。O(1),但是mutate 原来数据
 */
 class DOMStore {
     constructor() {
@@ -304,5 +304,30 @@ class DOMStore {
 
     has() {
         return !!node[this.domStoreIdentifier];
+    }
+}
+
+
+/*用indexOf..存keys, values : O(n) for all operations*/
+class DOMStore {
+    constructor() {
+        this.keys = [];
+        this.values = [];
+    }
+    set(node, value) {
+        const index = this.keys.indexOf(node);
+        if (index >= 0) {
+            this.values[index] = value;
+        } else {
+            this.values.push(value);
+            this.keys.push(node);
+        }
+    }
+    get(node) {
+        const index = this.keys.indexOf(node);
+        return index >= 0 ? this.values[index] : undefined;
+    }
+    has(node) {
+        return !!this.get(node);
     }
 }
