@@ -25,7 +25,7 @@ const arr2 = [
 
 const getMap = (arr) => {
     const myMap = {};
-    arr.forEach(element => {
+    arr.forEach((element) => {
         for (let key in element) {
             if (!myMap[key]) {
                 myMap[key] = [element[key]];
@@ -36,7 +36,7 @@ const getMap = (arr) => {
         }
     });
     return myMap;
-}
+};
 
 const removeArrayItem = (array1, array2) => {
     const myMap = getMap(array2);
@@ -49,11 +49,11 @@ const removeArrayItem = (array1, array2) => {
         return true;
     });
     return result;
-}
+};
 
 // console.log(removeArrayItem(arr, arr2));
 
-const test = [1,2,3, [4,5,6, [7,8,9, [10]]]];
+const test = [1, 2, 3, [4, 5, 6, [7, 8, 9, [10]]]];
 
 const flattenArray = (array1) => {
     const result = array1.reduce((accumulator, item) => {
@@ -61,15 +61,15 @@ const flattenArray = (array1) => {
             /**
              * 直接返回accumulator.push(item)的话
              * push 是返回item值
-            */
+             */
             accumulator.push(...flattenArray(item));
         } else {
             accumulator.push(item);
         }
-        return accumulator
+        return accumulator;
     }, []);
     return result;
-}
+};
 
 const flattenArrayIterative = (array1) => {
     const result = [];
@@ -82,6 +82,28 @@ const flattenArrayIterative = (array1) => {
         }
     }
     return result;
+};
+
+/**
+ * @param { Array } arr
+ * @param { number } depth
+ * @returns { Array }
+ */
+function flat(arr, depth = 1) {
+    // your implementation here
+    return helper(arr, depth);
+}
+
+function helper(arr, remainder) {
+    const result = arr.reduce((accumulator, item) => {
+        if (Array.isArray(item) && remainder > 0) {
+            accumulator.push(...helper(item, remainder - 1));
+        } else {
+            accumulator.push(item);
+        }
+        return accumulator;
+    }, []);
+    return result;
 }
 
 /**
@@ -89,46 +111,23 @@ const flattenArrayIterative = (array1) => {
  * @param { number } depth
  * @returns { Array }
  */
- function flat(arr, depth = 1) {
-    // your implementation here
-    return helper(arr, depth);
-  }
-  
-  function helper(arr, remainder) {
-    const result = arr.reduce((accumulator, item) => {
-      if (Array.isArray(item) && remainder > 0) {
-        accumulator.push(...helper(item, remainder - 1));
-      } else {
-        accumulator.push(item);
-      }
-      return accumulator;
-    }, []);
-    return result;
-  }
-
-  /**
- * @param { Array } arr
- * @param { number } depth
- * @returns { Array }
- */
 function flatIterative(arr, depth = 1) {
     // your imeplementation here
-    const newArray = arr.map(item => [item, depth]);
+    const newArray = arr.map((item) => [item, depth]);
     const result = [];
-    while(newArray.length > 0) {
-      const [item, depth] = newArray.shift();
-      if (Array.isArray(item) && depth > 0) {
-        newArray.unshift(...item.map(atom => [atom, depth-1]));
-      } else {
-        result.push(item);
-      }
+    while (newArray.length > 0) {
+        const [item, depth] = newArray.shift();
+        if (Array.isArray(item) && depth > 0) {
+            newArray.unshift(...item.map((atom) => [atom, depth - 1]));
+        } else {
+            result.push(item);
+        }
     }
     return result;
-  }
+}
 
 // console.log(flattenArray(test));
 // console.log(flattenArrayIterative(test));
-
 
 function throttle(func, duration) {
     let shouldWait = false;
@@ -139,31 +138,31 @@ function throttle(func, duration) {
             shouldWait = true;
             /**
              * 这里不能用arrow function，要不然this就乱了
-            */
-            setTimeout(function() {
+             */
+            setTimeout(function () {
                 shouldWait = false;
             }, duration);
         }
-    }
+    };
 }
 
 function debounce(func, duration) {
     let timeout = null;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            func.apply(this, args)
+            func.apply(this, args);
         }, duration);
-    }
+    };
 }
 
 /**
  * 有immediate leading
-*/
+ */
 
 const debounce2 = (func, wait, immediate) => {
     let timer = null;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timer);
         if (immediate) {
             let callNow = !timer;
@@ -178,13 +177,12 @@ const debounce2 = (func, wait, immediate) => {
                 func.apply(this, args);
             }, wait);
         }
-
-    }
-}
+    };
+};
 
 const throttle = (func, wait) => {
     let isLocked = false;
-    return function(...args) {
+    return function (...args) {
         if (!isLocked) {
             func.apply(this, args);
             isLocked = true;
@@ -192,26 +190,48 @@ const throttle = (func, wait) => {
                 isLocked = false;
             }, wait);
         }
-    }
-}
+    };
+};
 
 const throttle2 = (func, wait) => {
     let timeout = null;
-    return function(...args) {
+    return function (...args) {
         if (!timeout) {
             timeout = setTimeout(() => {
                 func.apply(this, args);
                 timeout = null;
             }, wait);
         }
-    }
+    };
+};
+
+function throttle3(func, wait) {
+    // 这个版本是对BFE对的，lock 和 lastARgs都要在 closure里，不能在function中。
+    let lock = false;
+    let lastArgs;
+    return function (...args) {
+        if (!lock) {
+            func.apply(null, args);
+            lock = true;
+            setTimeout(() => {
+                lock = false;
+                // 这里是如果lock的时候有function invoke，那就保存arg在unlock时候直接执行。
+                if (lastArgs) {
+                    func.apply(null, lastArgs);
+                    lastArgs = null;
+                }
+            }, wait);
+        } else {
+            lastArgs = args;
+        }
+    };
 }
 
 function traverse(matrix) {
     const columnNum = matrix[0].length;
     console.log(columnNum);
     const upperBound = 0;
-    const lowerBound = matrix.length-1;
+    const lowerBound = matrix.length - 1;
     const result = [];
     let isUp = false;
     let row = 0;
@@ -238,7 +258,7 @@ function traverse(matrix) {
         }
     }
 
-    return result.join("");
+    return result.join('');
 }
 
 const matrix = [
@@ -255,18 +275,18 @@ function TreeNode(val) {
     this.right = null;
 }
 
-const rootA = new TreeNode("a");
-const rootA21 = new TreeNode("a21");
-const rootA22 = new TreeNode("a22");
-const rootA31 = new TreeNode("a31");
+const rootA = new TreeNode('a');
+const rootA21 = new TreeNode('a21');
+const rootA22 = new TreeNode('a22');
+const rootA31 = new TreeNode('a31');
 rootA.left = rootA21;
 rootA.right = rootA22;
 rootA21.left = rootA31;
 
-const rootB = new TreeNode("b");
-const rootB21 = new TreeNode("b21");
-const rootB22 = new TreeNode("b22");
-const rootB31 = new TreeNode("b31");
+const rootB = new TreeNode('b');
+const rootB21 = new TreeNode('b21');
+const rootB22 = new TreeNode('b22');
+const rootB31 = new TreeNode('b31');
 rootB.left = rootB21;
 rootB.right = rootB22;
 rootB21.left = rootB31;
@@ -281,14 +301,13 @@ function sameNode(rootA, rootB, targetValue) {
 
 // console.log(sameNode(rootA, rootB, "a21"));
 
-
 /**
  * Create a DOMStore so that it has three methods: set, get, has.
 The DOMStore should be able to store a DOM Node and return the value associated with the particular Node.
 */
 /**
  * 如果不用Map的话，就把value直接存到node自己身上。O(1),但是mutate 原来数据
-*/
+ */
 class DOMStore {
     constructor() {
         this.domStoreIdentifier = Symbol();
@@ -306,7 +325,6 @@ class DOMStore {
         return !!node[this.domStoreIdentifier];
     }
 }
-
 
 /*用indexOf..存keys, values : O(n) for all operations*/
 class DOMStore {
