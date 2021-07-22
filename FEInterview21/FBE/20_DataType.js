@@ -14,3 +14,9 @@ function detectType(data) {
     }
     return typeof data;
 }
+
+/**
+ * To see the DOM node class name, we can recall
+ * that an object usually has the constructor property.
+ * It references the class constructor, and constructor.name is its name:
+ */
