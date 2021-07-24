@@ -16,3 +16,22 @@ function binarySearch(left, right) {
     //最小的left让
     return left 或者not found
 }
+
+
+
+function binarySearch(arr, target){
+    // your code here
+    if (arr.length === 0) return -1;
+    let left = 0;
+    let right = arr.length;
+    while (left < right) {
+      let middle = left + Math.floor((right-left)/2);
+      if (target === arr[middle]) return middle;
+      if (target < arr[middle]) {
+        left = middle+1;
+      } else {
+        right = middle;
+      }
+    }
+    return -1;
+  }
