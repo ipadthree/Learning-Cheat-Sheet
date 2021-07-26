@@ -112,12 +112,12 @@ const flattenArray = (array1) => {
     return result;
 };
 
-const flattenArrayIterative = (array1) => {
+const flattenArrayIterative = (arr) => {
     const result = [];
-    while (array1.length > 0) {
-        const item = array1.shift();
+    while (arr.length > 0) {
+        const item = arr.shift();
         if (Array.isArray(item)) {
-            array1 = [...item, ...array1];
+            arr = [...item, ...arr];
         } else {
             result.push(item);
         }
@@ -168,14 +168,6 @@ function flatIterative(arr, depth = 1) {
 
 //------------------------------------Identical DOM tree------------------------------------------------------//
 
-function sameNode(rootA, rootB, targetValue) {
-    if (!rootA) return;
-    if (rootA.val === targetValue) return rootB.val;
-    const left = sameNode(rootA.left, rootB.left, targetValue);
-    const right = sameNode(rootA.right, rootB.right, targetValue);
-    return left || right;
-}
-
 /**
  * @param {HTMLElement} rootA
  * @param {HTMLElement} rootB - rootA and rootB are clone of each other
@@ -196,20 +188,32 @@ const findCorrespondingNode = (rootA, rootB, target) => {
     return result;
 };
 
+function sameNode(rootA, rootB, targetValue) {
+    if (!rootA) return;
+    if (rootA.val === targetValue) return rootB.val;
+    const left = sameNode(rootA.left, rootB.left, targetValue);
+    const right = sameNode(rootA.right, rootB.right, targetValue);
+    return left || right;
+}
+
 const findCorrespondingNode = (rootA, rootB, target) => {
     // your code here
-    const queue = [rootA];
+    const queueA = [rootA];
     const queueB = [rootB];
-    while (queue.length > 0) {
-        const queueLength = queue.length;
-        for (let index = 0; index < queueLength; index++) {
-            if (queue[index] === target) {
-                return queueB[index];
-            }
-            queue.push(...queue[index].childNodes);
-            queueB.push(...queueB[index].childNodes);
+
+    while (queueA.length > 0 && queueB.length > 0) {
+        const itemA = queueA.shift();
+        const itemB = queueB.shift();
+
+        if (itemA === target) {
+            return itemB;
         }
+
+        itemA.childNodes.length > 0 && queueA.push(...itemA.childNodes);
+        itemB.childNodes.length > 0 && queueB.push(...itemB.childNodes);
     }
+
+    return null;
 };
 
 //------------------------------------Identical DOM tree------------------------------------------------------//
