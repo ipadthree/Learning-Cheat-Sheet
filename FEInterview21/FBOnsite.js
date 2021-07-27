@@ -44,7 +44,8 @@ class DOMStore {
         return index >= 0 ? this.values[index] : undefined;
     }
     has(node) {
-        return !!this.get(node);
+        // return !!this.get(node); //应该是不好的，要考虑null undefined, 0的情况
+        return this.keys.includes(node);
     }
 }
 
