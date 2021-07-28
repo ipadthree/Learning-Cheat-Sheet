@@ -2,7 +2,6 @@ function traverse(matrix) {
     if (matrix.length === 0) return "";
 
     const columnNum = matrix[0].length;
-    console.log(columnNum);
     const upperBound = 0;
     const lowerBound = matrix.length - 1;
     const result = [];
