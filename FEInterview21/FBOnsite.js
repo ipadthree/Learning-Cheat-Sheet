@@ -217,7 +217,15 @@ const findCorrespondingNode = (rootA, rootB, target) => {
     return null;
 };
 
-//------------------------------------Identical DOM tree------------------------------------------------------//
+//------------------------------------------------------------------------------------------//
 
-//Animation!!!
-//give distance, time as parameter, write a function can do animation that move a box from left side to right side.
+//desing a auto complete search box, like facebook level of data.
+//写autoComplete的时候主动加上了debounce和infinite scroll，把cache给忘了。。。
+//是前端题。每输入一个字母，下面会出现列表显示匹配结果，点击了会自动填充到输入框。现场写。
+
+/**
+ * give intervals, for example, [0,3, 'b'], 0 is start position (includesive), 3 is end position <excludesive>, and b is tag name
+so use intervals as input, [0,3,‍‌‍‌‍‍‌‌‍‍‌‌‍‌‍‌‌ 'b'], [2, 4,'i'], and another string as input "abc",
+the output will calulate overlaying and insert tage to string.  
+abcedfgh -> <b>ab</b> <b><i>c</i></b> <i>c</i>
+*/
